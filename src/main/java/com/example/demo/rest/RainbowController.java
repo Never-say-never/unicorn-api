@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Set;
 
@@ -20,8 +21,9 @@ public class RainbowController {
         this.rainbowFacade = rainbowFacade;
     }
 
-    @GetMapping("/{rainbowName}")
-    public Set<UnicornDto> showUnicorn(@PathVariable("name") String rainbowName) {
+    @ResponseBody
+    @GetMapping("/{rainbowName}/unicorns")
+    public Set<UnicornDto> getUnicorn(@PathVariable("rainbowName") String rainbowName) {
         return rainbowFacade.getRainbowMembers(rainbowName);
     }
 }

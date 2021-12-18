@@ -6,10 +6,12 @@ import lombok.Data;
 class Unicorn {
 
     private String name;
-    private int speed;
 
-    Unicorn(String name, int speed) {
+    Unicorn(String name) {
         this.name = name;
-        this.speed = speed;
+    }
+
+    public int getMarshmallows() {
+        return name.length();
     }
 }

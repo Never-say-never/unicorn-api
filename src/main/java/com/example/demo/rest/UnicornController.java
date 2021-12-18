@@ -3,10 +3,7 @@ package com.example.demo.rest;
 import com.example.demo.unicorn.UnicornFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/unicorn")
@@ -19,8 +16,8 @@ public class UnicornController {
     }
 
     @ResponseBody
-    @GetMapping("/{unicornName}")
-    public String showUnicorn(@PathVariable("unicornName") String unicornName) {
-        return unicornService.summonUnicorn(unicornName);
+    @DeleteMapping("/{unicornName}")
+    public String deleteUnicorn(@PathVariable("unicornName") String unicornName) {
+        return unicornService.decomposeUnicorn(unicornName);
     }
 }

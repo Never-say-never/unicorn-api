@@ -15,15 +15,15 @@ class UnicornService {
         this.unicornRepository = unicornRepository;
     }
 
-    String summonUnicorn(final String unicornName) {
-        Optional<Unicorn> unicornOptional = unicornRepository.findUnicornByName(unicornName);
+    String decompose(final String unicornName) {
+        Optional<Unicorn> unicornOptional = unicornRepository.deleteByName(unicornName);
 
-        return unicornOptional.map(unicorn -> "Summon a unicorn '" + unicorn.getName()
-                        + "', creature of rainbow, fast as lightning: " + unicorn.getSpeed() + "km/ph")
+        return unicornOptional.map(unicorn -> "Decompose unicorn '" + unicorn.getName()
+                        + "', you get " + unicorn.getMarshmallows() + " marshmallows")
                 .orElseThrow(() -> new UnicornNotFoundException(unicornName));
     }
 
-    Set<UnicornDto> unicornsOnRainbow(Long rainbowId) {
+    Set<UnicornDto> fetchUnicornFromRainbow(Long rainbowId) {
         Set<Unicorn> unicornOptional = unicornRepository.findUnicornByRainbowId(rainbowId);
 
         return unicornOptional.stream()
